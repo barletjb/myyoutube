@@ -1,0 +1,107 @@
+<div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-sm px-8 py-10">
+
+  <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-1">Créer un compte</h2>
+  <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-8">
+    Déjà inscrit ?
+    <a routerLink="/auth/login" class="text-blue-600 hover:underline font-medium">Se connecter</a>
+  </p>
+
+  <form [formGroup]="registerForm" class="flex flex-col gap-5">
+
+    <div class="flex flex-col gap-1.5">
+      <label for="name" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        Nom
+      </label>
+      <input
+        id="name"
+        type="text"
+        formControlName="username"
+        placeholder="Votre Nom"
+        class="h-10 px-3 rounded-xl border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+      />
+      @if (isInvalid('username')) {
+        <p class="text-xs text-red-500 flex items-center gap-1">
+          <i class="ti ti-alert-circle"></i>
+          {{getFieldError('username')}}
+        </p>
+      }
+
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label for="email" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        Email
+      </label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="jean@exemple.com"
+        class="h-10 px-3 rounded-xl border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+      />
+
+      @if (isInvalid('email')) {
+        <p class="text-xs text-red-500 flex items-center gap-1">
+          <i class="ti ti-alert-circle"></i>
+          {{getFieldError('email')}}
+        </p>
+      }
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label for="password" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        Mot de passe
+      </label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="••••••••"
+        class="h-10 px-3 rounded-xl border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+      />
+
+      @if (isInvalid('password')) {
+        <p class="text-xs text-red-500 flex items-center gap-1">
+          <i class="ti ti-alert-circle"></i>
+          {{getFieldError('password')}}
+        </p>
+      }
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label for="confirmPassword" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        Confirmer mot de passe
+      </label>
+      <input
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirmer votre mot de passe"
+        class="h-10 px-3 rounded-xl border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+      />
+
+      @if (isInvalid('confirmPassword')) {
+        <p class="text-xs text-red-500 flex items-center gap-1">
+          <i class="ti ti-alert-circle"></i>
+          {{getFieldError('confirmPassword')}}
+        </p>
+      }
+
+      @if (isPasswordMismatch()) {
+        <p class="text-xs text-red-500 flex items-center gap-1">
+          <i class="ti ti-alert-circle"></i>
+          Les mots de passe ne correspondent pas
+        </p>
+      }
+    </div>
+
+    <button
+      type="button"
+      (click)="onSubmit()"
+      class="mt-2 h-10 w-full rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-sm font-semibold transition-all"
+    >
+      Créer mon compte
+    </button>
+
+  </form>
+</div>

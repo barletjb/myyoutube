@@ -1,0 +1,44 @@
+<header class="flex items-center gap-2 px-4 h-14 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700 sticky top-0 z-50">
+  <a routerLink="/" class="flex items-center gap-1 mr-4 font-bold text-lg tracking-tight">
+    <i class="ti ti-player-play text-red-600 text-2xl"></i>
+    MyYoutube
+  </a>
+
+  <div class="flex flex-1 max-w-xl mx-auto">
+    <input
+      type="text"
+      placeholder="Rechercher"
+      class="flex-1 h-10 px-4 text-sm border border-zinc-300 dark:border-zinc-600 rounded-l-full bg-white dark:bg-zinc-800 focus:outline-none focus:border-blue-500"
+    />
+    <button class="h-10 w-14 border border-l-0 border-zinc-300 dark:border-zinc-600 rounded-r-full bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 transition-colors flex items-center justify-center">
+      <i class="ti ti-search text-lg"></i>
+    </button>
+  </div>
+
+  <div class="flex items-center gap-1 ml-auto">
+
+    @if (!isLoggedIn()) {
+
+      <a routerLink="/auth/register"
+         class="flex items-center gap-2 border border-zinc-300 rounded-full px-4 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors">
+        <i class="ti ti-user text-base"></i> S'inscrire
+      </a>
+      <a routerLink="/auth/login"
+         class="flex items-center gap-2 border border-zinc-300 rounded-full px-4 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors">
+        <i class="ti ti-user text-base"></i> Se connecter
+      </a>
+
+    }
+
+    @if (isLoggedIn()) {
+      <a routerLink="/profil"
+         class="w-8 h-8 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center justify-center hover:opacity-90 transition-opacity">
+        Profil
+      </a>
+      <button (click)="logout()"
+              class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-1.5 rounded-full transition-colors">
+        <i class="ti ti-logout text-base"></i> Déconnexion
+      </button>
+    }
+  </div>
+</header>
