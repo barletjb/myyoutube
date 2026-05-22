@@ -28,6 +28,8 @@ export class Login {
   userLogin: User = {
     username: '',
     password: '',
+    email:'',
+    createdAt: null
   };
 
   onSubmit() {
@@ -35,6 +37,8 @@ export class Login {
       this.userLogin = this.loginForm.value;
       if (this.authService.checkCredentials(this.userLogin.username, this.userLogin.password)) {
         this.authService.login(this.userLogin.username, this.userLogin.password);
+        this.userLogin.createdAt = this.authService.currentUser()?.createdAt
+        this.userLogin.email = this.authService.currentUser()?.email
         this.router.navigate(['/']);
       } else {
         console.log('Une erreur est survenue');

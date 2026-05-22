@@ -35,6 +35,7 @@ class Register {
     username: '',
     email: '',
     password: '',
+    createdAt: new Date(),
   };
 
   isInvalid(fieldName: string): boolean {

@@ -47,6 +47,7 @@ export class AuthService {
       username: newUser.username,
       email: newUser.email,
       password: newUser.password,
+      createdAt: new Date()
     });
 
     localStorage.setItem('users', JSON.stringify(users));
