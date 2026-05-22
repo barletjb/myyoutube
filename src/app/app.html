@@ -1,3 +1,8 @@
-<app-header/>
-<app-sidebar/>
-<router-outlet></router-outlet>
+<app-header />
+
+<div class="flex h-[calc(100vh-56px)]">
+  <app-sidebar />
+  <main class="flex-1 overflow-y-auto p-6">
+    <router-outlet />
+  </main>
+</div>
